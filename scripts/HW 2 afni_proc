@@ -1,0 +1,11 @@
+HW 2 afni_proc
+
+Constructed timing files using make_timings.py and timing_tool.py to drop 1st TR
+
+Experiment 1: 
+	Dice Coefficient: .1978 - not good
+
+Experiment 2:
+	Without motion censoring and regression - Dice Coefficient: .2200
+	With a smaller smoothing kernel - Dice Coefficient: .2745
+	Using 3dREMLfit - Dice Coefficient: .1978
