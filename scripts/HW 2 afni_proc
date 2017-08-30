@@ -9,3 +9,18 @@ Experiment 2:
 	Without motion censoring and regression - Dice Coefficient: .2200
 	With a smaller smoothing kernel - Dice Coefficient: .2745
 	Using 3dREMLfit - Dice Coefficient: .1978
+
+Edit (8/29/2017)
+The above was done assuming sub-brick 17 was the correct statistic, but it probably wasn't. Instead, I used stats.sub_03+tlrc['L-D_GLT#0_Tstat']
+
+Below is everything redone using the correct sub-brick.
+Experiment 1:
+	Dice Coefficient: .05296 - quite bad
+
+Experiment 2:
+	Without motion censoring and regression - Dice Coefficient: .02986 - much lower
+		This makes sense, since leaving in bad motion volumes would decrease the similarity/reliability between the two samples
+	With a smaller smoothing kernel - Dice Coefficient: .05976 - not much different
+		I would expect a smaller smoothing kernel to result in a smaller Dice coefficient because the data would be noisier in each sample
+	Using 3dREMLfit - Dice Coefficient: .00205 - much much lower
+		
