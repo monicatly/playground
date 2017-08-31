@@ -1,7 +1,33 @@
-#run to generate afni_proc.py script
+cd Documents/ibrain-training/hw2/sub-03/ses-test/func
+chmod 755 ../../../playground/scripts/make_timings.py
+
+#run script to make timing files in test sample
+../../../playground/scripts/make_timings.py sub-03_ses-test_task-linebisection_events.tsv 
+#run timing tool on each file to adjust for dropping the first TR in each run
+for f in *.1D
+do
+	timing_tool.py -timing $f -add_offset -2.5 -write_timing adj_${f}
+done
+
+#do the same for the retest sample
+cd ../../ses-retest/func
+../../../playground/scripts/make_timings.py sub-03_ses-retest_task-linebisection_events.tsv 
+for g in *.1D
+do
+	timing_tool.py -timing $g -add_offset -2.5 -write_timing adj_${g}
+done
+
+#run uber_subject.py and set parameters
+# change smoothing kernel to 6mm FWHM
+# change motion threshold to .5
+# check regress motion derivatives
+# 
+#run to generate afni_proc.py script for test and retest
 ./cmd.ap.sub_03
 
-#manually alter proc.sub_03 to correct tshift and others
+#manually alter proc.sub_03 to add -tpattern alt+z to tshift
+#-AddEdge -deoblique on -master_tlrc 3 to align
+#-bout to stats bucket
 
 #run proc.sub_03 for test and retest files
 
@@ -22,4 +48,6 @@
 #4. calculate dice coefficient
 3ddot -mask mask+tlrc -dodice stat.test.bin+tlrc stat.retest.bin+tlrc
 #found a Dice coefficient of 0.197834 - not so great
+
+#for experiment 2, I changed the -1blur_fwhm option in proc.sub_03
 

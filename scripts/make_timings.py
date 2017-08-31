@@ -6,11 +6,13 @@ import sys
 #'landmark stimuli with responses vs. only detection stimuli with responses'
 
 #make blank lists for storing times 
-landmark_timing=[]
+landmark_timing_c=[]
+landmark_timing_ic=[]
 detection_timing=[]
 
 #Condition names
-landmark=['Correct_Task','Incorrect_Task']
+landmark_c=['Correct_Task']
+landmark_ic=['Incorrect_Task']
 detection=['Response_Control']
 
 #Open event file
@@ -23,19 +25,26 @@ matches=n.finditer(trials)
 
 #Match trial type to conditions of interest
 for m in matches:
-	if m.groups()[1] in landmark:
-		landmark_timing.append(m.groups()[0])
+	if m.groups()[1] in landmark_c:
+		landmark_timing_c.append(m.groups()[0])
+	elif m.groups()[1] in landmark_ic:
+		landmark_timing_ic.append(m.groups()[0])
 	elif m.groups()[1] in detection:
 		detection_timing.append(m.groups()[0])
 
 #Convert list into tab-delimited string
-landmark_timing = '\t'.join(landmark_timing)
+landmark_timing_c = '\t'.join(landmark_timing_c)
+landmark_timing_ic = '\t'.join(landmark_timing_ic)
 detection_timing = '\t'.join(detection_timing)
 
 #Write landmark timing file
-l = open('landmark_times.1D','w+')
-l.write(landmark_timing)
+l = open('landmark_correct_times.1D','w+')
+l.write(landmark_timing_c)
 l.close()
+
+l2 = open('landmark_incorrect_times.1D','w+')
+l2.write(landmark_timing_ic)
+l2.close()
 
 #Write detection timing file
 d = open('detection_times.1D','w+')
