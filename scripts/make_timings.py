@@ -9,11 +9,16 @@ import sys
 landmark_timing_c=[]
 landmark_timing_ic=[]
 detection_timing=[]
+nr_control_timing=[]
+nr_task_timing=[]
 
 #Condition names
 landmark_c=['Correct_Task']
 landmark_ic=['Incorrect_Task']
 detection=['Response_Control']
+nr_control=['No_Response_Control']
+nr_task=['No_Response_Task']
+
 
 #Open event file
 with open(sys.argv[1], 'r') as text:
@@ -31,11 +36,17 @@ for m in matches:
 		landmark_timing_ic.append(m.groups()[0])
 	elif m.groups()[1] in detection:
 		detection_timing.append(m.groups()[0])
+	elif m.groups()[1] in nr_control:
+		nr_control_timing.append(m.groups()[0])
+	elif m.groups()[1] in nr_task:
+		nr_task_timing.append(m.groups()[0])
 
 #Convert list into tab-delimited string
 landmark_timing_c = '\t'.join(landmark_timing_c)
 landmark_timing_ic = '\t'.join(landmark_timing_ic)
 detection_timing = '\t'.join(detection_timing)
+nr_control_timing = '\t'.join(nr_control_timing)
+nr_task_timing = '\t'.join(nr_task_timing)
 
 #Write landmark timing file
 l = open('landmark_correct_times.1D','w+')
@@ -50,3 +61,11 @@ l2.close()
 d = open('detection_times.1D','w+')
 d.write(detection_timing)
 d.close()
+
+n = open('nr_control_times.1D','w+')
+n.write(nr_control_timing)
+n.close()
+
+n2 = open('nr_task_times.1D','w+')
+n2.write(nr_task_timing)
+n2.close()

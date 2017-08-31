@@ -33,3 +33,9 @@ Experiment 1:
 Experiment 2:
 	With a smaller smoothing kernel - Dice Coefficient: .1359
 		Lower, as expected. 
+
+Edit (8/31/2017)
+Edited make_timings.py to create 5 timing files for each condition. All 5 stimulus files were entered into uber_subject.py. Same contrast.
+
+Experiment 1:
+	Dice Coefficient: .1381
