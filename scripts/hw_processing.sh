@@ -33,7 +33,7 @@ done
 
 #in each results folder
 #1. threshold statistics
-3dmerge -1zscore -1thresh 1.96 -1noneg -prefix stat.thresh 'stats.sub_03+tlrc[17]'
+3dmerge -1zscore -1thresh 1.96 -1noneg -prefix stat.thresh 'stats.sub_03+tlrc['L-D_GLT#0_Tstat']'
 
 #2. calculate mask of intersection
 #navigate back out to sub-03 folder

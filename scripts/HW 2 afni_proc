@@ -39,3 +39,10 @@ Edited make_timings.py to create 5 timing files for each condition. All 5 stimul
 
 Experiment 1:
 	Dice Coefficient: .1381
+
+Edit (9/3/2017). FINALLY.
+Re-ran changing basis function from BLOCK(16.25) to GAM
+Experiment 1:
+	Dice Coefficient: .1987
+Experiment 2: With smoothing kernel of 3mm FWHM
+	Dice Coefficient: .1615
