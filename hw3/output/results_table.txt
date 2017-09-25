@@ -1,0 +1,4 @@
+	k (Voxels)	Z	x	y	z
+1	22282	0.2257	-42.0	87.0	-15.0
+2	19	0.023	39.0	-57.0	21.0
+Z is z-score of peak voxel. XYZ Coordinates are for peak voxel, in TLRC space (in mm)
