@@ -1,0 +1,24 @@
+HW 4
+December 3, 2017
+Monica Ly
+
+Review the data
+Q: How many shells (different nominal b values) are there? What are the shell b values?
+A: By looking in the 100206_3T_DWI_dir95_LR.bval file, there are 4 shells: 0-5, 1000ish, 2000ish, and 3000ish. 
+Q: How many b0 volumes are there in each DWI Sequence? 
+A: 6. They show up as 5s in the .bval. Indices: 0, 16, 32, 48, 64, 80
+Q: Are the LR/RL phase encoding labels correct?
+A: Yes. Looking in AFNI, there are large distortions (big chunks displaced around slice 30) that match the phase encoding labeled
+
+Preprocess
+0. Topup needs to have even dimensions. nifti_tool -disp_hdr -infile b0_LR_0.nii.gz shows that the dims (x,y,z) are 144 168 111
+   Z has odd number, so I want to extract all but the top volume first - see script: mergeb0s.sh
+1. Extract the b0 volumes from each DWI sequence and combine them into a single 4D NIFTI file 
+See script: mergeb0s.sh
+2. Estimation of the distortion field using topup. 
+EPI factor = 144
+Echo spacing = 0.78ms = 0.00078
+Read out time (for Siemens) = (EPI factor - 1) * echo spacing = (144-1)*.00078 = 0.11154
+See script: topups.sh (took 3.5 hours to run)
+3. 
+
